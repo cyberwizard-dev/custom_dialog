@@ -1,8 +1,8 @@
-name: custom_dialog
-description: A new Flutter package.
-version: 1.0.0
-homepage: https://github.com/cyberwizard/CustomDialog
-repository: https://github.com/cyberwizard/CustomDialog
+name: cyberwizard_custom_dialog
+description: A customizable Flutter package for displaying beautiful and animated success, error, and warning dialogs.
+version: 1.0.1
+homepage: https://github.com/cyberwizard-dev/custom_dialog
+repository: https://github.com/cyberwizard-dev/custom_dialog
 environment:
   sdk: ">=2.17.0 <4.0.0"
 dependencies:
