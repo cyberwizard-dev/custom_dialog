@@ -13,6 +13,9 @@ class CustomDialog extends StatefulWidget {
   final String confirmButtonText;
   final String cancelButtonText;
   final bool rounded;
+  final Color? iconColor;
+  final Color? confirmButtonColor;
+  final Color? cancelButtonColor;
 
   const CustomDialog({
     super.key,
@@ -24,6 +27,9 @@ class CustomDialog extends StatefulWidget {
     this.confirmButtonText = 'Confirm',
     this.cancelButtonText = 'Cancel',
     this.rounded = true,
+    this.iconColor,
+    this.confirmButtonColor,
+    this.cancelButtonColor,
   });
 
   static Future<void> showCustomDialog({
@@ -36,6 +42,9 @@ class CustomDialog extends StatefulWidget {
     String confirmButtonText = 'Confirm',
     String cancelButtonText = 'Cancel',
     bool rounded = true,
+    Color? iconColor,
+    Color? confirmButtonColor,
+    Color? cancelButtonColor,
   }) {
     return showDialog(
       context: context,
@@ -48,6 +57,9 @@ class CustomDialog extends StatefulWidget {
         confirmButtonText: confirmButtonText,
         cancelButtonText: cancelButtonText,
         rounded: rounded,
+        iconColor: iconColor,
+        confirmButtonColor: confirmButtonColor,
+        cancelButtonColor: cancelButtonColor,
       ),
     );
   }
@@ -61,6 +73,10 @@ class _CustomDialogState extends State<CustomDialog>
   late AnimationController _controller;
 
   Color _getPrimaryColor() {
+    return widget.iconColor ?? _getDefaultColor();
+  }
+
+  Color _getDefaultColor() {
     switch (dialogType) {
       case CustomDialogType.success:
         return Colors.green;
@@ -155,7 +171,7 @@ class _CustomDialogState extends State<CustomDialog>
             widget.onCancel?.call();
           },
           style: TextButton.styleFrom(
-            foregroundColor: Colors.grey.shade700,
+            foregroundColor: widget.cancelButtonColor ?? Colors.grey.shade700,
             shape: RoundedRectangleBorder(borderRadius: buttonRadius),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           ),
@@ -167,12 +183,12 @@ class _CustomDialogState extends State<CustomDialog>
             widget.onConfirm();
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor,
+            backgroundColor: widget.confirmButtonColor ?? primaryColor,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(borderRadius: buttonRadius),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             elevation: 2,
-            shadowColor: primaryColor.withOpacity(0.4),
+            shadowColor: (widget.confirmButtonColor ?? primaryColor).withOpacity(0.4),
           ),
           child: Text(widget.confirmButtonText),
         ),

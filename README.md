@@ -7,6 +7,7 @@ A customizable Flutter package for displaying beautiful and animated success, er
 *   **Customizable Dialog Types:** Easily display success, error, or warning dialogs.
 *   **Animated Entry:** Dialogs animate into view for a smooth user experience.
 *   **Customizable Buttons:** Set custom text for confirm and cancel buttons.
+*   **Customizable Colors:** Set custom colors for the icon, confirm button, and cancel button.
 *   **Rounded Corners:** Option to display dialogs with rounded corners.
 *   **Simple API:** A straightforward static method to show dialogs.
 
@@ -16,7 +17,7 @@ Add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  custom_dialog: ^1.0.0
+  custom_dialog: ^1.0.3
 ```
 
 Then, run `flutter pub get` to install the package.
@@ -78,6 +79,26 @@ CustomDialog.showCustomDialog(
     print('Warning confirmed!');
   },
   rounded: false,
+);
+```
+
+## Customizing Colors
+
+You can customize the colors of the icon, confirm button, and cancel button by providing the `iconColor`, `confirmButtonColor`, and `cancelButtonColor` parameters.
+
+```dart
+CustomDialog.showCustomDialog(
+  context: context,
+  dialogType: CustomDialogType.success,
+  title: 'Custom Colors!',
+  description: 'This dialog has custom colors.',
+  onConfirm: () {
+    // Handle confirm action
+    print('Custom colors confirmed!');
+  },
+  iconColor: Colors.purple,
+  confirmButtonColor: Colors.purple,
+  cancelButtonColor: Colors.grey,
 );
 ```
 
